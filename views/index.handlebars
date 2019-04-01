@@ -1,6 +1,37 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <h1 class="display-4 text-center">Sign In Manager</h1>
   </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <p class="lead">Use the form below to add and manage attendees to your meetings.</p>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form id="add-attendee">
+                <input class="add form-control" type="text" placeholder="new attendee" name='attendee'>
+                <button type="submit" class="add btn btn-info">Add</button>
+            </form>
+            {{#each signIns}}
+                <p class="lead attendees">{{this.name}}   
+                    <button class="btn btn-info" id="edit" data-id="{{this.id}}">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <button class="btn btn-info" id="present" data-id="{{this.id}}">
+                        <i class="fas fa-user-check"></i>
+                    </button>
+                    <button class="btn btn-info" id="absent" data-id="{{this.id}}">
+                        <i class="fas fa-user-times"></i>
+                    </button>
+                </p>
+            {{/each}}
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 </div>
