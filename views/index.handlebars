@@ -12,24 +12,41 @@
         <div class="col-md-3"></div>
     </div>
     <div class="row">
-        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <h5>Present</h5>
+            {{#each signIns}}
+            {{#if this.signedIn}}
+            <p>{{this.name}}</p>
+            {{/if}}
+            {{/each}}
+            <h5>Absent</h5>
+            {{#each signIns}}
+            {{#unless this.onList}}
+            <p>{{this.name}}</p>
+            {{/unless}}
+            {{/each}}
+        </div>
         <div class="col-md-6">
             <form id="add-attendee">
                 <input class="add form-control" type="text" placeholder="new attendee" name='attendee'>
                 <button type="submit" class="add btn btn-info">Add</button>
             </form>
             {{#each signIns}}
+            {{#if this.onList }}
+            {{#unless this.signedIn}}
                 <p class="lead attendees">{{this.name}}   
-                    <button class="btn btn-info" id="edit" data-id="{{this.id}}">
+                    <button class="update btn btn-info" data-id="{{this.id}}" data-type="editName">
                         <i class="fas fa-pencil-alt"></i>
                     </button>
-                    <button class="btn btn-info" id="present" data-id="{{this.id}}">
+                    <button class="update btn btn-info" data-id="{{this.id}}" data-type="present">
                         <i class="fas fa-user-check"></i>
                     </button>
-                    <button class="btn btn-info" id="absent" data-id="{{this.id}}">
+                    <button class="update btn btn-info" data-id="{{this.id}}" data-type="absent">
                         <i class="fas fa-user-times"></i>
                     </button>
                 </p>
+            {{/unless}}
+            {{/if}}
             {{/each}}
         </div>
         <div class="col-md-3"></div>
