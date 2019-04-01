@@ -11,8 +11,13 @@ app.use(express.json());
 // Static directory
 app.use(express.static("public"));
 
+// setting up handlebars
+var exphbs = require('express-handlebars');
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
 // Routes
-require("./routes/api-routes.js")(app);
+require("./routes/routes.js")(app);
 
 db.sequelize.sync().then(function(){
     app.listen(PORT, function() {
