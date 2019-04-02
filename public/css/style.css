@@ -1,8 +1,30 @@
 
-.attendees {
-    margin: .75rem 0;
+body,
+.btn {
+    color: #36454f;
+    background-color: #E8AA9B;
 }
 
-.add {
-    margin: .75rem 0;
+.attendees {
+    margin: 1.2rem 0;
+}
+
+.list {
+    margin: 2rem 0;
+}
+
+.jumbotron {
+    background-color: #9BE8CD;
+}
+
+.btn {
+    margin-right: .2rem;
+    margin-left: .2rem;
+    background-color: #9BE8CD;
+    border-color: #9BE8CD;
+}
+
+.btn:hover {
+    background-color: #9C5949;
+    border-color: #9C5949;
 }

@@ -12,6 +12,7 @@
         <div class="col-md-3"></div>
     </div>
     <div class="row">
+        {{!-- List of present/absent attendees --}}
         <div class="col-md-3">
             <h5>Present</h5>
             {{#each signIns}}
@@ -28,26 +29,32 @@
         </div>
         <div class="col-md-6">
             <form id="add-attendee">
-                <input class="add form-control" type="text" placeholder="new attendee" name='attendee'>
-                <button type="submit" class="add btn btn-info">Add</button>
+                <div class="input-group mb-3 form">
+                    <input type="text" class="form-control" placeholder="New attendee" name='attendee'>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add</button>
+                    </div>
+                </div>
             </form>
-            {{#each signIns}}
-            {{#if this.onList }}
-            {{#unless this.signedIn}}
-                <p class="lead attendees">{{this.name}}   
-                    <button class="update btn btn-info" data-id="{{this.id}}" data-type="editName">
-                        <i class="fas fa-pencil-alt"></i>
-                    </button>
-                    <button class="update btn btn-info" data-id="{{this.id}}" data-type="present">
-                        <i class="fas fa-user-check"></i>
-                    </button>
-                    <button class="update btn btn-info" data-id="{{this.id}}" data-type="absent">
-                        <i class="fas fa-user-times"></i>
-                    </button>
-                </p>
-            {{/unless}}
-            {{/if}}
-            {{/each}}
+            <div class="list">
+                {{#each signIns}}
+                {{#if this.onList }}
+                {{#unless this.signedIn}}
+                    <p class="lead attendees">{{this.name}}   
+                        <button class="update btn btn-info" data-id="{{this.id}}" data-type="editName">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button class="update btn btn-info" data-id="{{this.id}}" data-type="present">
+                            <i class="fas fa-user-check"></i>
+                        </button>
+                        <button class="update btn btn-info" data-id="{{this.id}}" data-type="absent">
+                            <i class="fas fa-user-times"></i>
+                        </button>
+                    </p>
+                {{/unless}}
+                {{/if}}
+                {{/each}}
+            </div>
         </div>
         <div class="col-md-3"></div>
     </div>
