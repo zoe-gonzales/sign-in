@@ -13,8 +13,16 @@ module.exports = function(app){
         });
     });
 
-    app.put('/api/signins/:id', function(req,res){
+    app.put('/api/signins/', function(req,res){
         db.Signin.update(req.body, {
+            where: {id: req.params.id}
+        }).then(function(result){
+            res.json(result);
+        });
+    });
+
+    app.delete('/api/signins/:id', function(req,res){
+        db.Signin.destroy({
             where: {id: req.params.id}
         }).then(function(result){
             res.json(result);

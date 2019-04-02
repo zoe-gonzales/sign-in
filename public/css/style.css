@@ -28,3 +28,20 @@ body,
     background-color: #9C5949;
     border-color: #9C5949;
 }
+
+.btn-edit {
+    margin: 0;
+    padding: 0;
+    background-color: #E8AA9B;
+    border-color: #E8AA9B;
+}
+
+.btn-edit:hover {
+    background-color: #E8AA9B;
+    border-color: #E8AA9B;
+    color: #9C5949;
+}
+
+.btn-update {
+    margin: .75rem 0;
+}

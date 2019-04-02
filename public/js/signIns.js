@@ -18,9 +18,11 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.update', function(){
+        $('#update').modal('show');
         var itemToUpdate = $(this).data('type');
-
-        var id = $(this).data('id');
+        var id = $(this).data('id');     
+        
+   
 
         var updatedAttendee = {};
 
@@ -36,12 +38,25 @@ $(document).ready(function(){
             break;
         }
 
-        $.ajax('/api/signins/' + id, {
-            method: 'PUT',
-            data: updatedAttendee
-        }).then(function(){
-            location.reload();
-        });
+        // $.ajax('/api/signins/' + id, {
+        //     method: 'PUT',
+        //     data: updatedAttendee
+        // }).then(function(){
+        //     location.reload();
+        // });
         
+    });
+
+    $(document).on('click', '.btn-delete', function(){
+        var deleteAttendee = confirm('Are you sure you want to delete this attendee?');
+        var id = $(this).data('id');
+        console.log(deleteAttendee);
+        if (deleteAttendee) {
+            $.ajax('/api/signins/' + id, {
+                method: 'DELETE'
+            }).then(function(){
+                location.reload();
+            });
+        }
     });
 });
