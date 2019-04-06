@@ -12,5 +12,14 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.BOOLEAN,
         }
     });
+
+    Signin.associate = function(models){
+        Signin.belongsTo(models.Meeting, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
     return Signin;
 }

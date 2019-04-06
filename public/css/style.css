@@ -45,3 +45,8 @@ body,
 .btn-update {
     margin: .75rem 0;
 }
+
+.add-note {
+    margin: .75rem 0;
+    float: right;
+}

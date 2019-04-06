@@ -73,7 +73,6 @@ $(document).ready(function(){
         });
     }
     
-
     $(document).on('click', '.btn-delete', function(){
         var deleteAttendee = confirm('Are you sure you want to delete this attendee?');
         var id = $(this).data('id');
@@ -85,5 +84,19 @@ $(document).ready(function(){
                 location.reload();
             });
         }
+    });
+
+    $('#add-text').on('click', function(e){
+        e.preventDefault();
+        var newNote = {
+            text: $('#text').val()
+        }
+
+        $.ajax('/api/notes', {
+            method: 'POST',
+            data: newNote
+        }).then(function(){
+            location.reload();
+        });
     });
 });
