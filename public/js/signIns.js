@@ -17,6 +17,28 @@ $(document).ready(function(){
 
     });
 
+    $(document).on('click', '.quick-update', function(){
+        var itemToUpdate = $(this).data('type');
+        var id = $(this).data('id');    
+        var updatedAttendee = {}; 
+
+        switch (itemToUpdate){
+            case 'present':
+                updatedAttendee.signedIn = 1;
+            break;
+            case 'absent':
+                updatedAttendee.onList = 0;
+            break;
+        }
+
+        $.ajax('/api/signins/' + id, {
+            method: 'PUT',
+            data: updatedAttendee
+        }).then(function(){
+            location.reload();
+        });
+    });
+
     $(document).on('click', '.update', function(){
         $('#update').modal('show');
         var id = $(this).data('id');     
@@ -41,6 +63,7 @@ $(document).ready(function(){
                 dataToSend.signedIn = parseInt(present);
             }
 
+            console.log(dataToSend);
             $.ajax('/api/signins/' + idWhere, {
                 method: 'PUT',
                 data: dataToSend
