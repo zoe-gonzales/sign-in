@@ -19,33 +19,37 @@ $(document).ready(function(){
 
     $(document).on('click', '.update', function(){
         $('#update').modal('show');
-        var itemToUpdate = $(this).data('type');
         var id = $(this).data('id');     
-        
-   
-
-        var updatedAttendee = {};
-
-        switch (itemToUpdate){
-            case 'editName':
-                // updatedAttendee.name = $(this)
-            break;
-            case 'present':
-                updatedAttendee.signedIn = 1;
-            break;
-            case 'absent':
-                updatedAttendee.onList = 0;
-            break;
-        }
-
-        // $.ajax('/api/signins/' + id, {
-        //     method: 'PUT',
-        //     data: updatedAttendee
-        // }).then(function(){
-        //     location.reload();
-        // });
-        
+        getUpdates(id);
     });
+    
+    function getUpdates(idWhere){
+        $('#saveChanges').on('click', function(dataToSend){
+            dataToSend = {};
+            var updatedName = $('#newName').val().trim();
+            var onList = $('input[name=onlist]:checked').val();
+            var present = $('input[name=present]:checked').val();
+    
+            if (onList === undefined || present === undefined){
+                alert('Please select one of the choices or close.');
+            } else if (!updatedName){
+                dataToSend.onList = parseInt(onList);
+                dataToSend.signedIn = parseInt(present);
+            } else {
+                dataToSend.name = updatedName;
+                dataToSend.onList = parseInt(onList);
+                dataToSend.signedIn = parseInt(present);
+            }
+
+            $.ajax('/api/signins/' + idWhere, {
+                method: 'PUT',
+                data: dataToSend
+            }).then(function(){
+                location.reload();
+            });
+        });
+    }
+    
 
     $(document).on('click', '.btn-delete', function(){
         var deleteAttendee = confirm('Are you sure you want to delete this attendee?');

@@ -12,11 +12,10 @@ const development = require('../config/development');
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else if (env === "development") {
+} else if (env === 'development') {
   sequelize = new Sequelize(development.database, development.username, development.password, development);
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
-
 }
 
 fs
