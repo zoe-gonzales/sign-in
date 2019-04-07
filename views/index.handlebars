@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4 text-center">
-        Sign In Manager
+        Meeting Manager
         <p class="lead text-center subtitle">{{meetingDesc}} | <a href="/" class="meeting-link">Back to Meetings</a></p>
     </h1>
     
@@ -60,7 +60,7 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <p class="lead">Use the form below to add and manage attendees to your meetings.</p>
+            <p class="lead">Add and manage attendees below.</p>
         </div>
         <div class="col-md-3"></div>
     </div>
@@ -133,13 +133,11 @@
                     <button class="btn btn-info add-note" id="add-text" data-meetingid="{{meetingId}}">Add note</button>
                 </div>
             </form>
-            <div class="row">
-                <ul class="notes-list">
+            <ul class="notes-list">
                 {{#each notes}}
                 <li>{{this.dataValues.text}}</li>
                 {{/each}}
-                </ul>
-            </div>
+            </ul>            
         </div>
             
     </div>

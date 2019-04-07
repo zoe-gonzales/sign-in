@@ -2,7 +2,7 @@
 body,
 .btn {
     color: #36454f;
-    background-color: #E8AA9B;
+    background-color: #87C2CC;
 }
 
 .attendees {
@@ -14,14 +14,15 @@ body,
 }
 
 .jumbotron {
-    background-color: #9BE8CD;
+    background-image: url(../img/jumbo.png);
+    box-shadow: inset 0 0 0 1000px rgba(194, 255, 230,.4);
 }
 
 .btn {
     margin-right: .2rem;
     margin-left: .2rem;
-    background-color: #9BE8CD;
-    border-color: #9BE8CD;
+    background-color: #C2FFE6;
+    border-color: #C2FFE6;
 }
 
 .btn:hover {
@@ -32,13 +33,13 @@ body,
 .btn-edit {
     margin: 0;
     padding: 0;
-    background-color: #E8AA9B;
-    border-color: #E8AA9B;
+    background-color: #87C2CC;
+    border-color: #87C2CC;
 }
 
 .btn-edit:hover {
-    background-color: #E8AA9B;
-    border-color: #E8AA9B;
+    background-color: #87C2CC;
+    border-color: #87C2CC;
     color: #9C5949;
 }
 
@@ -62,7 +63,8 @@ body,
 }
 
 .notes-list {
-    margin-top: 3.5rem;
+    float: left;
+    margin-top: 3rem;
 }
 
 .subtitle {
