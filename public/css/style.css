@@ -46,7 +46,25 @@ body,
     margin: .75rem 0;
 }
 
-.add-note {
+.add-note,
+.btn-meeting {
     margin: .75rem 0;
     float: right;
+}
+
+.meeting-link {
+    color: #9C5949;
+}
+
+.meeting-link:hover {
+    color: #36454f;
+    text-decoration: none;
+}
+
+.notes-list {
+    margin-top: 3.5rem;
+}
+
+.subtitle {
+    margin-top: 1rem;
 }

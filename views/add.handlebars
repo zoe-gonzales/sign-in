@@ -1,0 +1,36 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 text-center">Meeting Manager</h1>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <p class="lead text-center">To get started, add a meeting.</p>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <form id="add-meeting">
+          <input class="form-control" type="text" placeholder="Meeting description" name="meeting">
+          <button class="btn btn-info btn-meeting" type="submit">Create Meeting</button>
+        </form>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        {{#each meetings}}
+        <p class="lead">
+          <a class="meeting-link" href="/meeting/{{dataValues.id}}">{{dataValues.id}}: {{dataValues.description}}</a>
+        </p>
+        {{/each}}
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+</div>

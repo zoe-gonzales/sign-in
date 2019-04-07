@@ -1,12 +1,16 @@
 $(document).ready(function(){
     $('#add-attendee').on('submit', function(event){
         event.preventDefault();
+        var meetingId = $(this).data('meetingid');
 
         var newAttendee = {
             name: $('#add-attendee [name=attendee]').val().trim(),
             onList: 1,
-            signedIn: 0
+            signedIn: 0,
+            MeetingId: meetingId
         }
+        
+        $('#add-attendee [name=attendee]').val('');
 
         $.ajax('/api/signins', {
             method: 'POST',
@@ -14,7 +18,6 @@ $(document).ready(function(){
         }).then(function(){
             location.reload();
         });
-
     });
 
     $(document).on('click', '.quick-update', function(){
@@ -88,13 +91,33 @@ $(document).ready(function(){
 
     $('#add-text').on('click', function(e){
         e.preventDefault();
+        var meetingId = $(this).data('meetingid');
+
         var newNote = {
-            text: $('#text').val()
+            text: $('#text').val(),
+            MeetingId: meetingId
         }
 
         $.ajax('/api/notes', {
             method: 'POST',
             data: newNote
+        }).then(function(){
+            location.reload();
+        });
+    });
+
+    $('#add-meeting').on('submit', function(e){
+        e.preventDefault();
+        var desc = $("#add-meeting [name=meeting]").val().trim();
+        console.log(desc);
+
+        var newMeeting = {
+            description: desc
+        }
+
+        $.ajax('/api/meetings', {
+            method: 'POST',
+            data: newMeeting
         }).then(function(){
             location.reload();
         });

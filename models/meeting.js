@@ -6,11 +6,19 @@ module.exports = function(sequelize, DataTypes){
         }
     });
 
-    // Meeting.associate = function(models){
-    //     Meeting
-    //     .hasMany(models.SignIn, {as:'attendees'})
-    //     .hasMany(models.Note, {as:'notes'});
-    // }
+    Meeting.associate = function(models){
+        Meeting.hasMany(models.Signin, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
+        Meeting.hasMany(models.Note, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
 
     return Meeting;
 }

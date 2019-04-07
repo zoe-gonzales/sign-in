@@ -2,9 +2,28 @@ var db = require('../models');
 
 module.exports = function(app){
     app.get('/', function(req,res){
-        db.Signin.findAll().then(function(data){
-            console.log(data);
-            res.render('index', {signIns: data});
+        db.Meeting.findAll().then(function(data){
+            res.render('add', {meetings: data});
+        });
+    });
+
+    app.get('/meeting/:id', function(req,res){
+        db.Meeting.findOne({
+            where: {id: req.params.id},
+            include: [db.Signin, db.Note]
+        }).then(function(data){
+            res.render('index', {
+                meetingDesc: data.dataValues.description,
+                meetingId: req.params.id,
+                signIns: data.dataValues.Signins,
+                notes: data.dataValues.Notes
+            });
+        });
+    });
+
+    app.post('/api/meetings', function(req,res){
+        db.Meeting.create(req.body).then(function(result){
+            res.json(result);
         });
     });
 
