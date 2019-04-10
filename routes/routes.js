@@ -54,4 +54,12 @@ module.exports = function(app){
             res.json(result);
         });
     });
+
+    app.delete('/api/notes/:id', function(req,res){
+        db.Note.destroy({
+            where: {id: req.params.id}
+        }).then(function(result){
+            res.json(result);
+        });
+    });
 }

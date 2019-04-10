@@ -70,3 +70,7 @@ body,
 .subtitle {
     margin-top: 1rem;
 }
+
+.complete {
+    text-decoration: line-through;
+}

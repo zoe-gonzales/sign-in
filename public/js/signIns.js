@@ -116,6 +116,26 @@ $(document).ready(function(){
         }
     });
 
+    $(document).on('click', '.delete-note', function(){
+        var deleteNote = confirm('Are you sure you want to delete this note?');
+        var id = $(this).data('id');
+        console.log(deleteNote);
+        if (deleteNote) {
+            $.ajax('/api/notes/' + id, {
+                method: 'DELETE'
+            }).then(function(){
+                location.reload();
+            });
+        }
+    });
+
+    $(document).on('click', '.note-status', function(){
+        var bullet = $(this).parent();
+        if (bullet.hasClass('complete')){
+            bullet.removeClass('complete');
+        } else bullet.addClass('complete');
+    });
+
     $('#add-text').on('click', function(e){
         e.preventDefault();
         var meetingId = $(this).data('meetingid');
