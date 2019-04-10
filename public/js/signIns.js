@@ -42,6 +42,33 @@ $(document).ready(function(){
         });
     });
 
+    $(document).on('click', '.updateName', function(){
+        $('#updateName').modal('show');
+        var id = $(this).data('id'); 
+        updateNameOnly(id);
+        
+    });
+
+    function updateNameOnly(idWhere){
+        $('#saveNameChange').on('click', function(dataToSend){
+            dataToSend = {};
+            var updatedName = $('#newNameAwaiting').val().trim();
+
+            if (!updatedName){
+                alert('Please enter an updated name or select close.');
+            } else {
+                dataToSend.name = updatedName;
+            }
+            
+            $.ajax('/api/signins/' + idWhere, {
+                method: 'PUT',
+                data: dataToSend
+            }).then(function(){
+                location.reload();
+            });
+        });
+    }
+
     $(document).on('click', '.update', function(){
         $('#update').modal('show');
         var id = $(this).data('id');     

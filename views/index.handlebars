@@ -8,55 +8,75 @@
   </div>
 </div>
 <div class="container">
-     {{!-- Update Modal --}}
-        {{!-- ============================================== --}}
-        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="update">
+    {{!-- ============================================== --}}
+    {{!-- Update While Awaiting Modal --}}
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="updateName">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                 <div class="modal-body">
-                    <form id="#update-attendee">
+                    <form id="#update-awaiting-attendee">
                         <div><p>Please enter new details below.</p></div>
-                        <label for="newName"></label>
-                        <input class="form-control" type="text" placeholder="Name" id="newName">
-                        <p>Awaiting attendee?
-                            {{!-- On List --}}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="onlist" value="1">Yes
-                                </label>
-                            </div>
-                            {{!-- Not On List --}}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="onlist" value="0">No
-                                </label>
-                            </div>
-                        </p>
-                        <p>Present at meeting?
-                            {{!-- Present --}}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="present" value="1">Yes
-                                </label>
-                            </div>
-                            {{!-- Absent --}}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="present" value="0">No
-                                </label>
-                            </div>
-                        </p>
+                        <label for="newNameAwaiting"></label>
+                        <input class="form-control" type="text" placeholder="Name" id="newNameAwaiting">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="saveChanges">Save changes</button>
+                            <button type="button" class="btn btn-primary" id="saveNameChange">Save changes</button>
                         </div>
                     </form>
                 </div>
                 </div>
             </div>
+    </div>
+    {{!-- End of Update While Awaiting Modal --}}
+    {{!-- ============================================== --}}
+    {{!-- Update All Modal --}}
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="update">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            <div class="modal-body">
+                <form id="#update-attendee">
+                    <div><p>Please enter new details below.</p></div>
+                    <label for="newName"></label>
+                    <input class="form-control" type="text" placeholder="Name" id="newName">
+                    <p>Awaiting attendee?
+                        {{!-- On List --}}
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="onlist" value="1">Yes
+                            </label>
+                        </div>
+                        {{!-- Not On List --}}
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="onlist" value="0">No
+                            </label>
+                        </div>
+                    </p>
+                    <p>Present at meeting?
+                        {{!-- Present --}}
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="present" value="1">Yes
+                            </label>
+                        </div>
+                        {{!-- Absent --}}
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="radio" name="present" value="0">No
+                            </label>
+                        </div>
+                    </p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="saveChanges">Save changes</button>
+                    </div>
+                </form>
+            </div>
+            </div>
         </div>
-        {{!-- ============================================== --}}
-    {{!-- End of Update Modal --}}
+    </div>
+    {{!-- End of Update All Modal --}}
+    {{!-- ============================================== --}}
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
@@ -110,7 +130,7 @@
                 {{#unless this.signedIn}}
                     <p class="lead attendees">
                         {{this.name}}   
-                        <button class="update btn btn-info btn-edit" data-id="{{this.id}}" data-type="editName">
+                        <button class="updateName btn btn-info btn-edit" data-id="{{this.id}}" data-type="editName">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
                         <button class="quick-update btn btn-info" data-id="{{this.id}}" data-type="present">
