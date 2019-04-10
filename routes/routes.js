@@ -47,6 +47,14 @@ module.exports = function(app){
         });
     });
 
+    app.put('/api/notes/:id', function(req,res){
+        db.Note.update(req.body, {
+            where: {id: req.params.id}
+        }).then(function(result){
+            res.json(result);
+        });
+    });
+
     app.delete('/api/signins/:id', function(req,res){
         db.Signin.destroy({
             where: {id: req.params.id}
