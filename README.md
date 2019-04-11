@@ -41,7 +41,7 @@ Clicking the pencil displays options to update attendees. If nothing is entered 
 <img src="./images/update.png" alt="update attendee status" title="update attendee status" width="500" />
 
 Add notes/to-do items associated with the current meeting. <br>
-✔️ - Simply crosses out the to do as completed. Clicking again removes this in case the items still needs to be done. <br>
+✔️ - Simply crosses out the to do as completed. Clicking again removes this in case the item still needs to be done. <br>
 ✏️ - Enables editing of note content. <br>
 ✖️ - Deletes notes upon user confirmation. <br>
 
